@@ -18,6 +18,7 @@ namespace Tic_Tac_Toe
         static void Main()
         {
             string input;
+            const int naturalLog = 10;
 
             do
             {
@@ -26,7 +27,7 @@ namespace Tic_Tac_Toe
                 input = Console.ReadLine().ToLower(); //This input takes the exit command or the first number from the user, if they are initiation calculation process.
                 if (input == "exit") //Will end the program if the user desires.
                     break;
-                CalculatorLogic(input); //The Calculator logic is prepared, and the input is parsed onto this method to prevent double input requirement.
+                CalculatorLogic(input, naturalLog); //The Calculator logic is prepared, and the input is parsed onto this method to prevent double input requirement.
             }
 
             while (true); //Will continue until user desires to hit the break condition
@@ -92,7 +93,7 @@ namespace Tic_Tac_Toe
         /// This method contains the logic for the calculator. It will require either 2 or 3 inputs depending on choice of operator. First number, operator, and second number. When choosing the banana operator, there is no need for a third number, as the first number is the number of bananas, and banana size is static. 
         /// </summary>
         /// <param name="input">Required here to allow for the first input to either initiate the calculation process (entering a number) or ending the program (writing exit)</param>
-        private static void CalculatorLogic(string input)
+        private static void CalculatorLogic(string input, int naturalLog)
         {
             if (double.TryParse(input, out double num1)) //Condition that checks if the input can be interpreted as a double, if yes, the logic will begin, else nothing will happen. This will help prevent invalid inputs. If valid, num1 will be gathered and passed on inside the if statement for further calculations.
             {
@@ -162,7 +163,7 @@ namespace Tic_Tac_Toe
 
                     case "l": //Handles the result in case of logarithm calculation
 
-                        result = Math.Log(num1, 10);
+                        result = Math.Log(num1, naturalLog);
 
                         break; //Exits the switch
 
